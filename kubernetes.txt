@@ -1,0 +1,50 @@
+kubectl get nodes
+kubectl get namespace
+kubectl create deployment --image tutum/hello-world webserver
+kubectl get pods
+kubectl get all -o wide
+kubectl scale deployment --replicas 6 webserver
+kubectl get pods
+kubectl get all -o wide
+kubectl get services
+kubectl get deployment
+kubectl describe deployment webserver
+kubectl expose deployment webserver --name webserver-lb --type LoadBalancer --port 80 --target-port 80
+kubectl create service nodeport webserver --tcp=81:80
+kubectl get services
+Increase the node to 3
+
+kubectl scale deployment --replicas 6 webserver
+kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+
+kubectl get pods
+
+==========================Local Deployment============
+git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+
+cd azure-voting-app-redis
+
+dir
+docker-compose up -d
+
+docker images
+
+docker ps
+now open the app with dns name
+
+===============================================
+az group create --name myResourceGroup --location eastus
+
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
+
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+
+kubectl get nodes
+
+====== vi azure-vote.yaml======
+kubectl apply -f azure-vote.yaml
+
+kubectl get service azure-vote-front --watch
+
+az group delete --name myResourceGroup --yes --no-wait
+
